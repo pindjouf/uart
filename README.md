@@ -8,7 +8,8 @@ This project aims to implement a Universal Asynchronous Receiver/Transmitter (UA
 - D flip-flop module created
 - Initial project structure established
 
-![gpt_block_diagram](/assets/sipo.jpg) 
+
+<img src="/assets/sipo.jpg" alt="gpt_block_diagram" style="width: 50%;">
 
 ## Project Structure
 
