@@ -2,13 +2,14 @@
 
 module sipoUnit #(parameter WIDTH = 8) (
     input wire data_in,
-    input reg reset,
+    input wire hold_value,
+    input wire reset,
     input wire clk,
     output reg [WIDTH-1:0] q
 );
 
     dff dff0 (
-        .d(data_in),
+        .d(hold_value ? q[0] : data_in),
         .reset(reset),
         .clk(clk),
         .q(q[0])
@@ -17,7 +18,7 @@ module sipoUnit #(parameter WIDTH = 8) (
     generate
         for (genvar i = 0; i < WIDTH-1; i++) begin
             dff dff_inst (
-                .d(q[i]),
+                .d(hold_value ? q[i+1] : q[i]),
                 .reset(reset),
                 .clk(clk),
                 .q(q[i+1])

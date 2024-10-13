@@ -8,7 +8,6 @@ This project aims to implement a Universal Asynchronous Receiver/Transmitter (UA
 - D flip-flop module created
 - Initial project structure established
 
-
 <img src="/assets/sipo.jpg" alt="gpt_block_diagram" style="width: 50%;">
 
 ## Project Structure
@@ -30,7 +29,7 @@ uart/
 1. Complete SIPO unit
    - [x] Implement basic shift register
    - [x] Add parameterization for register width
-   - [ ] Implement and test hold functionality
+   - [x] Implement and test hold functionality
 
 2. Develop UART transmitter
    - [ ] Design transmitter module

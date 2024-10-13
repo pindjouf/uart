@@ -7,10 +7,12 @@ parameter WIDTH = 8;
 reg clk;
 reg data;
 reg reset;
+reg hold_value;
 reg [WIDTH-1:0] q;
 
     sipoUnit dut (
         .data_in(data),
+        .hold_value(hold_value),
         .reset(reset),
         .clk(clk),
         .q(q)
@@ -68,6 +70,12 @@ reg [WIDTH-1:0] q;
         $display("input=%0h", data);
         $display("output=%0h", q[7], q[6], q[5], q[4], q[3], q[2], q[1], q[0]);
         $display("---");
+        #5;
+        $display("time=%0tps", $time);
+        $display("input=%0h", data);
+        $display("output=%0h", q[7], q[6], q[5], q[4], q[3], q[2], q[1], q[0]);
+        $display("---");
+        hold_value = 1;
         #5;
         $display("time=%0tps", $time);
         $display("input=%0h", data);
