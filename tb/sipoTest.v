@@ -4,15 +4,18 @@ module sipoTest;
 
 reg clk;
 reg data;
+reg reset;
 reg [7:0] q;
 
     sipoUnit dut (
         .data_in(data),
+        .reset(reset),
         .clk(clk),
         .q(q)
     );
 
     always #5 clk = ~clk;
+    always if (reset) begin data = 1'b0; end
 
     initial begin
         data = 0;
@@ -68,6 +71,13 @@ reg [7:0] q;
         $display("input=%0h", data);
         $display("output=%0h", q[7], q[6], q[5], q[4], q[3], q[2], q[1], q[0]);
         $display("---");
+        reset = 1;
+        #5;
+        $display("time=%0tps", $time);
+        $display("input=%0h", data);
+        $display("output=%0h", q[7], q[6], q[5], q[4], q[3], q[2], q[1], q[0]);
+        $display("---");
+
         $finish;
     end
 endmodule

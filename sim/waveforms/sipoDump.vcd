@@ -4,50 +4,74 @@ $timescale 1ps $end
   $scope module sipoTest $end
    $var wire 1 , clk $end
    $var wire 1 - data $end
+   $var wire 1 . reset $end
    $var wire 8 # q [7:0] $end
    $scope module dut $end
     $var wire 1 - data_in $end
+    $var wire 1 . reset $end
     $var wire 1 , clk $end
     $var wire 8 # q [7:0] $end
     $scope module dff0 $end
      $var wire 1 - d $end
      $var wire 1 , clk $end
+     $var wire 1 . reset $end
      $var wire 1 $ q $end
     $upscope $end
-    $scope module dff1 $end
-     $var wire 1 $ d $end
-     $var wire 1 , clk $end
-     $var wire 1 % q $end
+    $scope module genblk1[0] $end
+     $scope module dff_inst $end
+      $var wire 1 $ d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 % q $end
+     $upscope $end
     $upscope $end
-    $scope module dff2 $end
-     $var wire 1 % d $end
-     $var wire 1 , clk $end
-     $var wire 1 & q $end
+    $scope module genblk1[1] $end
+     $scope module dff_inst $end
+      $var wire 1 % d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 & q $end
+     $upscope $end
     $upscope $end
-    $scope module dff3 $end
-     $var wire 1 & d $end
-     $var wire 1 , clk $end
-     $var wire 1 ' q $end
+    $scope module genblk1[2] $end
+     $scope module dff_inst $end
+      $var wire 1 & d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 ' q $end
+     $upscope $end
     $upscope $end
-    $scope module dff4 $end
-     $var wire 1 ' d $end
-     $var wire 1 , clk $end
-     $var wire 1 ( q $end
+    $scope module genblk1[3] $end
+     $scope module dff_inst $end
+      $var wire 1 ' d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 ( q $end
+     $upscope $end
     $upscope $end
-    $scope module dff5 $end
-     $var wire 1 ( d $end
-     $var wire 1 , clk $end
-     $var wire 1 ) q $end
+    $scope module genblk1[4] $end
+     $scope module dff_inst $end
+      $var wire 1 ( d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 ) q $end
+     $upscope $end
     $upscope $end
-    $scope module dff6 $end
-     $var wire 1 ) d $end
-     $var wire 1 , clk $end
-     $var wire 1 * q $end
+    $scope module genblk1[5] $end
+     $scope module dff_inst $end
+      $var wire 1 ) d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 * q $end
+     $upscope $end
     $upscope $end
-    $scope module dff7 $end
-     $var wire 1 * d $end
-     $var wire 1 , clk $end
-     $var wire 1 + q $end
+    $scope module genblk1[6] $end
+     $scope module dff_inst $end
+      $var wire 1 * d $end
+      $var wire 1 , clk $end
+      $var wire 1 . reset $end
+      $var wire 1 + q $end
+     $upscope $end
     $upscope $end
    $upscope $end
   $upscope $end
@@ -67,6 +91,7 @@ b00000000 #
 0+
 0,
 0-
+0.
 #5000
 b00000001 #
 1$
@@ -121,9 +146,13 @@ b10011001 #
 0,
 1-
 #45000
-b00110011 #
-1%
+b00000000 #
+0$
 0'
-1)
+0(
 0+
 1,
+0-
+1.
+#50000
+0,
