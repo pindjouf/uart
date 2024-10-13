@@ -2,10 +2,12 @@
 
 module sipoTest;
 
+parameter WIDTH = 8;
+
 reg clk;
 reg data;
 reg reset;
-reg [7:0] q;
+reg [WIDTH-1:0] q;
 
     sipoUnit dut (
         .data_in(data),

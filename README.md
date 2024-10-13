@@ -29,7 +29,7 @@ uart/
 
 1. Complete SIPO unit
    - [x] Implement basic shift register
-   - [ ] Add parameterization for register width
+   - [x] Add parameterization for register width
    - [ ] Implement and test hold functionality
 
 2. Develop UART transmitter

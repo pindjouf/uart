@@ -1,10 +1,10 @@
 `timescale 1ns/1ps
 
-module sipoUnit (
+module sipoUnit #(parameter WIDTH = 8) (
     input wire data_in,
     input reg reset,
     input wire clk,
-    output reg [7:0] q
+    output reg [WIDTH-1:0] q
 );
 
     dff dff0 (
@@ -15,7 +15,7 @@ module sipoUnit (
         );
 
     generate
-        for (genvar i = 0; i < 7; i++) begin
+        for (genvar i = 0; i < WIDTH-1; i++) begin
             dff dff_inst (
                 .d(q[i]),
                 .reset(reset),
