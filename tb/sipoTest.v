@@ -87,7 +87,6 @@ reg [WIDTH-1:0] q;
         $display("input=%0h", data);
         $display("output=%0h", q[7], q[6], q[5], q[4], q[3], q[2], q[1], q[0]);
         $display("---");
-
         $finish;
     end
 endmodule
