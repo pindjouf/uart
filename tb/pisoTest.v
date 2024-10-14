@@ -43,7 +43,7 @@ initial begin
     #10;
     repeat (8) begin
         #10;
-        $display("time=%0tps | input=%0h | output=%0h", $time, data, q);
+        $display("time=%0tps | input=0x%0h | output=%0h", $time, data, q);
     end
 
     #10 clear = 1;
@@ -59,7 +59,7 @@ initial begin
     #10;
     repeat (8) begin
         #10;
-        $display("time=%0tps | input=%0h | output=%0h", $time, data, q);
+        $display("time=%0tps | input=0x%0h | output=%0h", $time, data, q);
     end
 
     clear = 1;
