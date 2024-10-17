@@ -4,7 +4,7 @@ This project aims to implement a Universal Asynchronous Receiver/Transmitter (UA
 
 ## Current Status
 
-- Basic shift register (PISO - Parallel In Serial Out) unit implemented
+- Basic Baud Rate Generator unit created
 
 <img src="/assets/sipo.jpg" alt="gpt_block_diagram" style="width: 50%;">
 
@@ -16,12 +16,14 @@ uart/
 ├── README.md
 ├── rtl
 │   └── sipoUnit.v
+│   └── baudUnit.v
 │   └── dff.v
 │   └── pisoUnit.v
 ├── sim
 │   └── waveforms
 └── tb
     └── sipoTest.v
+    └── baudTest.v
     └── pisoTest.v
 ```
 
