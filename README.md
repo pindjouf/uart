@@ -58,7 +58,7 @@ echo "Hello, World!" with bytes:
    - [ ] Design transmitter module
    - [x] Implement parallel-in serial-out (PISO) functionality
    - [ ] Add start and stop bit generation
-   - [ ] Implement baud rate generator
+   - [x] Implement baud rate generator
 
 3. Develop UART receiver
    - [ ] Design receiver module
