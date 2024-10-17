@@ -4,9 +4,7 @@ This project aims to implement a Universal Asynchronous Receiver/Transmitter (UA
 
 ## Current Status
 
-- Basic shift register (SIPO - Serial In Parallel Out) unit implemented
-- D flip-flop module created
-- Initial project structure established
+- Basic shift register (PISO - Parallel In Serial Out) unit implemented
 
 <img src="/assets/sipo.jpg" alt="gpt_block_diagram" style="width: 50%;">
 
@@ -18,11 +16,34 @@ uart/
 ├── README.md
 ├── rtl
 │   └── sipoUnit.v
+│   └── dff.v
+│   └── pisoUnit.v
 ├── sim
 │   └── waveforms
 └── tb
     └── sipoTest.v
+    └── pisoTest.v
 ```
+
+## Goal
+
+echo "Hello, World!" with bytes:
+
+| Character | ASCII (Decimal) | ASCII (Binary) |
+|-----------|-----------------|----------------|
+| H         | 72              | 01001000       |
+| e         | 101             | 01100101       |
+| l         | 108             | 01101100       |
+| l         | 108             | 01101100       |
+| o         | 111             | 01101111       |
+| ,         | 44              | 00101100       |
+| (space)   | 32              | 00100000       |
+| W         | 87              | 01010111       |
+| o         | 111             | 01101111       |
+| r         | 114             | 01110010       |
+| l         | 108             | 01101100       |
+| d         | 100             | 01100100       |
+| !         | 33              | 00100001       |
 
 ## Roadmap
 
@@ -33,7 +54,7 @@ uart/
 
 2. Develop UART transmitter
    - [ ] Design transmitter module
-   - [ ] Implement parallel-in serial-out (PISO) functionality
+   - [x] Implement parallel-in serial-out (PISO) functionality
    - [ ] Add start and stop bit generation
    - [ ] Implement baud rate generator
 
