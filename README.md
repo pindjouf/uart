@@ -1,6 +1,6 @@
 # UART
 
-A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in mind, most of this work has been done on a 5+ layover journey so some of the code is verbose and has obviously been coded with a tired mind! It's still a work in progress but making great strides. Come along for the journey! 😎
+A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in mind, most of this work has been done on a 5+ layover journey so some of the code is verbose and has obviously been coded with a tired mind! It's a wip btw.
 
 ## 🚧 Current Status
 
