@@ -1,94 +1,107 @@
-# UART (In Development)
+# UART
 
-This project aims to implement a Universal Asynchronous Receiver/Transmitter (UART) in Verilog. The UART is currently under active development and not yet fully functional.
+A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in mind, most of this work has been done on a 5+ layover journey so some of the code is verbose and has obviously been coded with a tired mind! It's still a work in progress but making great strides. Come along for the journey! 😎
 
-## Current Status
+## 🚧 Current Status
 
-- Basic Baud Rate Generator unit created
+- ✅ **Baud Rate Generator** unit completed
+- ✅ **transmitter module** module operational
+- 🔄 Actively developing the **receiver module**
 
-<img src="/assets/sipo.jpg" alt="gpt_block_diagram" style="width: 50%;">
+<img src="/assets/sipo.jpg" alt="UART Block Diagram" style="width: 50%;">
 
-## Project Structure
+---
 
-```txt
-uart/
+## 🎯 Project Goals
+
+Transmit **"Hello, World!"** in bytes:
+
+| Character | ASCII (Hex) | ASCII (Binary)  |
+|-----------|-------------|-----------------|
+| H         | 0x48        | 01001000        |
+| e         | 0x65        | 01100101        |
+| l         | 0x6C        | 01101100        |
+| l         | 0x6C        | 01101100        |
+| o         | 0x6F        | 01101111        |
+| ,         | 0x2C        | 00101100        |
+| (space)   | 0x20        | 00100000        |
+| W         | 0x57        | 01010111        |
+| o         | 0x6F        | 01101111        |
+| r         | 0x72        | 01110010        |
+| l         | 0x6C        | 01101100        |
+| d         | 0x64        | 01100100        |
+| !         | 0x21        | 00100001        |
+
+## 📂 Project Structure
+
+Here's what the project layout looks like:
+
+```bash
+.
 ├── assets
-├── README.md
-├── rtl
-│   └── sipoUnit.v
-│   └── baudUnit.v
-│   └── dff.v
-│   └── pisoUnit.v
-├── sim
-│   └── waveforms
-└── tb
-    └── sipoTest.v
-    └── baudTest.v
-    └── pisoTest.v
+│   └── sipo.jpg            # Diagrams and visual aids
+├── README.md                # This file!
+├── rtl                      # RTL modules (core logic)
+│   ├── baudUnit.v           # Baud Rate Generator
+│   ├── dff.v                # D Flip-Flop for register-based logic
+│   ├── pisoUnit.v           # PISO (Parallel-In Serial-Out) unit
+│   ├── sipoUnit.v           # SIPO (Serial-In Parallel-Out) unit
+│   └── transmitter.v        # UART transmitter
+├── sim                      # Simulation outputs
+│   └── waveforms            # Generated waveforms (output)
+└── tb                       # Testbenches for simulation
+    ├── baudTest.v           # Testbench for Baud Unit
+    ├── pisoTest.v           # Testbench for PISO Unit
+    ├── sipoTest.v           # Testbench for SIPO Unit
+    └── transmitter_tb.v     # Testbench for Transmitter (new and shiny!)
 ```
 
-## Goal
+## 🛣️ Roadmap
 
-echo "Hello, World!" with bytes:
+### Core Components
 
-| Character | ASCII (Decimal) | ASCII (Binary) |
-|-----------|-----------------|----------------|
-| H         | 72              | 01001000       |
-| e         | 101             | 01100101       |
-| l         | 108             | 01101100       |
-| l         | 108             | 01101100       |
-| o         | 111             | 01101111       |
-| ,         | 44              | 00101100       |
-| (space)   | 32              | 00100000       |
-| W         | 87              | 01010111       |
-| o         | 111             | 01101111       |
-| r         | 114             | 01110010       |
-| l         | 108             | 01101100       |
-| d         | 100             | 01100100       |
-| !         | 33              | 00100001       |
-
-## Roadmap
-
-1. Complete SIPO unit
+1. **Complete SIPO unit** (Serial-In Parallel-Out)
    - [x] Implement basic shift register
    - [x] Add parameterization for register width
    - [x] Implement and test hold functionality
 
-2. Develop UART transmitter
-   - [ ] Design transmitter module
-   - [x] Implement parallel-in serial-out (PISO) functionality
-   - [ ] Add start and stop bit generation
-   - [x] Implement baud rate generator
+2. **Develop UART Transmitter**
+   - [x] Design and implement **Parallel-In Serial-Out (PISO)** functionality
+   - [x] Add **baud rate generator**
+   - [x] Integrate **start and stop bit** generation
+   - [x] Implement **new testbench** for thorough validation
 
-3. Develop UART receiver
+3. **Develop UART Receiver**
    - [ ] Design receiver module
    - [ ] Implement start bit detection
    - [ ] Add data sampling logic
    - [ ] Implement stop bit checking
 
-4. Create top-level UART module
-   - [ ] Integrate transmitter and receiver
-   - [ ] Add configuration options (e.g., baud rate, data bits)
+4. **Top-Level UART Module**
+   - [ ] Integrate transmitter and receiver modules
+   - [ ] Add configurable options (baud rate, data bits)
 
-5. Develop comprehensive testbench
-   - [ ] Create testbench for individual modules
+5. **Develop Comprehensive Testbench**
+   - [x] Test individual modules
    - [ ] Develop full UART system testbench
-   - [ ] Implement various test scenarios
+   - [ ] Add various test scenarios to cover edge cases
 
-6. Documentation and cleanup
-   - [ ] Complete inline code documentation
-   - [ ] Finalize README with usage instructions
-   - [ ] Create waveform diagrams for key operations
+### 🛠️ Optional Enhancements
 
-7. Optional enhancements
-   - [ ] Add parity bit support
-   - [ ] Implement FIFO buffers for transmit and receive
-   - [ ] Add oversampling for improved noise immunity
+- [ ] Add **parity bit** support
+- [ ] Implement **FIFO buffers** for transmit/receive queues
+- [ ] Add **oversampling** for improved noise immunity
 
-## Usage
+---
 
-Currently, the project is not ready for use. Check back for updates as development progresses.
+## 💻 Usage
 
-## Contributing
+The project is still in active development and isn't ready for full-scale use. Stay tuned for updates as we progress toward full functionality.
 
-This project is in early development. If you're interested in contributing, please check the roadmap for areas that need work. (not accepting PR's until I've implemented a solution myself)
+---
+
+## 🤝 Contributing
+
+🛑 **Currently not accepting PRs** until core functionality is implemented. If you'd like to contribute, keep an eye on the **roadmap** for areas needing work once this initial phase is done!
+
+Feel free to fork, explore, and come back soon!

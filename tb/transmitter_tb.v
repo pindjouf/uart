@@ -12,7 +12,6 @@ reg [WIDTH-1:0] data;
 wire [3:0] bit_count;
 reg start;
 
-// Instantiate the transmitter module
 transmitter dut (
     .clk(clk),
     .reset(reset),
@@ -23,7 +22,6 @@ transmitter dut (
     .start(start)
 );
 
-// Clock generation
 always #5 clk = ~clk;  // clock period = 10ns
 
 initial begin
@@ -46,7 +44,7 @@ initial begin
     $display("Sending Data Block #1 (10011001)");
     
     repeat (10) begin
-        #17355;  // Simulate a period for the baud rate, adjust based on actual baud rate
+        #17355;
         $display("%0tps | 0x%h | %b | %d", $time, data, tx, bit_count);
     end
 
@@ -66,7 +64,6 @@ initial begin
     // Final reset before ending the simulation
     reset_sequence();
 
-    // Finish simulation after final delay
     #100000 $finish;
 end
 
