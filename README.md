@@ -8,8 +8,6 @@ A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in min
 - ✅ **transmitter module** module operational
 - 🔄 Actively developing the **receiver module**
 
-<img src="/assets/sipo.jpg" alt="UART Block Diagram" style="width: 50%;">
-
 ---
 
 ## 🎯 Project Goals
@@ -38,8 +36,6 @@ Here's what the project layout looks like:
 
 ```bash
 .
-├── assets
-│   └── sipo.jpg            # Diagrams and visual aids
 ├── README.md                # This file!
 ├── rtl                      # RTL modules (core logic)
 │   ├── baudUnit.v           # Baud Rate Generator
