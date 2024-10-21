@@ -12,7 +12,8 @@ A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in min
 
 ## 🎯 Project Goals
 
-Transmit **"Hello, World!"** in bytes:
+Echo **"Hello, World!"** in bytes, as per wikipedia:
+> **echo** is the local display of data, either initially as it is **local**ly sourced and sent, or finally as a copy of it is received back from a **remote** destination. **Local echo** is where the local sending equipment displays the outgoing sent data. **Remote echo** is where the display is a return copy of data as received remotely.
 
 | Character | ASCII (Hex) | ASCII (Binary)  |
 |-----------|-------------|-----------------|
