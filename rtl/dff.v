@@ -3,14 +3,24 @@
 module dff (
     input d,
     input clk,
-    input reg reset,
+    input reset,
+    output reg baud,
+    output reg [3:0] shift_counter,
     output reg q
 );
 
-always @ (posedge clk or negedge clk) begin
+    baudUnit baudGen (
+        .clk(clk),
+        .reset(reset),
+        .baud(baud)
+    );
+
+always @ (posedge baud or negedge baud) begin
     if (reset) begin
         q <= 1'b0;
+        shift_counter <= 0;
     end else begin
+        shift_counter <= shift_counter + 1;
         q <= d;
     end
 end

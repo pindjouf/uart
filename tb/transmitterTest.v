@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module transmitter_tb;
+module transmitterTest;
 
 parameter WIDTH = 8;
 

@@ -5,8 +5,9 @@ A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in min
 ## 🚧 Current Status
 
 - ✅ **Baud Rate Generator** unit completed
-- ✅ **transmitter module** module operational
-- 🔄 Actively developing the **receiver module**
+- ✅ **Transmitter module** module operational
+- 🔄 Actively fixing the **receiver module**
+- 🔄 Actively developing the **uart module**
 
 ---
 
@@ -44,13 +45,16 @@ Here's what the project layout looks like:
 │   ├── pisoUnit.v           # PISO (Parallel-In Serial-Out) unit
 │   ├── sipoUnit.v           # SIPO (Serial-In Parallel-Out) unit
 │   └── transmitter.v        # UART transmitter
+│   └── receiver.v        # UART receiver
+│   └── uart.v        # UART top-module
 ├── sim                      # Simulation outputs
 │   └── waveforms            # Generated waveforms (output)
 └── tb                       # Testbenches for simulation
     ├── baudTest.v           # Testbench for Baud Unit
     ├── pisoTest.v           # Testbench for PISO Unit
     ├── sipoTest.v           # Testbench for SIPO Unit
-    └── transmitter_tb.v     # Testbench for Transmitter (new and shiny!)
+    └── transmitterTest.v     # Testbench for Transmitter
+    └── receiverTest.v     # Testbench for Receiver 
 ```
 
 ## 🛣️ Roadmap
@@ -69,14 +73,14 @@ Here's what the project layout looks like:
    - [x] Implement **new testbench** for thorough validation
 
 3. **Develop UART Receiver**
-   - [ ] Design receiver module
+   - [x] Design receiver module
    - [ ] Implement start bit detection
    - [ ] Add data sampling logic
    - [ ] Implement stop bit checking
 
 4. **Top-Level UART Module**
-   - [ ] Integrate transmitter and receiver modules
-   - [ ] Add configurable options (baud rate, data bits)
+   - [x] Integrate transmitter and receiver modules
+   - [x] Add configurable options (baud rate, data bits)
 
 5. **Develop Comprehensive Testbench**
    - [x] Test individual modules
