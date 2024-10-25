@@ -20,6 +20,7 @@ module sipoUnit #(parameter WIDTH = 8) (
     dff dff0 (
         .d(hold_value ? q[0] : data_in),
         .reset(reset),
+        .shift_counter(bit_count),
         .clk(clk),
         .q(q[0])
         );
@@ -29,6 +30,7 @@ module sipoUnit #(parameter WIDTH = 8) (
             dff dff_inst (
                 .d(hold_value ? q[i+1] : q[i]),
                 .reset(reset),
+                .shift_counter(bit_count),
                 .clk(clk),
                 .q(q[i+1])
             );

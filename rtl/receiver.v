@@ -15,6 +15,7 @@ module receiver (
         .data_in(data),
         .hold_value(hold_value),
         .reset(reset),
+        .bit_count(bit_count),
         .baud(baud),
         .clk(clk),
         .q(rx)
