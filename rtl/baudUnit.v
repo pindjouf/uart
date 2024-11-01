@@ -15,11 +15,11 @@ localparam int DIVIDER = SYSTEM_CLOCK_FREQ / BAUD_RATE;
 reg [15:0] counter;
 
 always @(posedge clk or posedge reset) begin
-    if (reset) begin
-        counter <= 0;
-        baud <= 0;
-        sample <= 0;
-    end else if (counter >= DIVIDER - 1) begin
+    // if (reset) begin
+        // counter <= 0;
+        // baud <= 0;
+        // sample <= 0;
+    if (counter >= DIVIDER - 1) begin
         counter <= 0;
         baud <= ~baud;
         sample <= 0;
