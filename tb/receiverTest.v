@@ -6,6 +6,7 @@ parameter WIDTH = 8;
 
 reg clk;
 reg data;
+wire sample;
 reg baud;
 reg reset;
 reg start;
@@ -19,13 +20,15 @@ reg [WIDTH-1:0] rx;
         .baud(baud),
         .reset(reset),
         .clk(clk),
+        .sample(sample),
         .rx(rx)
     );
 
     baudUnit baudGen (
         .clk(clk),
         .reset(reset),
-        .baud(baud)
+        .baud(baud),
+        .sample(sample)
     );
 
     always #5 clk = ~clk;
