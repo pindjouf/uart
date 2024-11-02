@@ -1,3 +1,83 @@
-obj_dir
-venv
+# Node.js related (Frontend)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite related
+.vite/
+.vitest/
+*.env.local
+*.env.*.local
+
+# Python related (Backend)
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+*.eggs/
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# FastAPI specific
+instance/
+*.db
+*.sqlite
+*.log
+
+# Docker related
+*.dockerignore
+Dockerfile
+docker-compose.yml
+.docker/
+
+# IDEs, Editors, OS-specific
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Python environment
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyTest cache
+.cache/
+
+# pyenv
+.python-version
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.tox/
+
+# Logs and debugging files
+*.log
+*.out
+*.err
+
+# Vercel and Deployment related
+.vercel/
+vercel.json
+
+# Miscellaneous
 .env
+.env.*
