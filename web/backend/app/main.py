@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from shift_registers import sipo, piso
+from app.uart.shift_registers import sipo, piso
 from dataclasses import dataclass
 from typing import List
 
