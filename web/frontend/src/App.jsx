@@ -48,7 +48,7 @@ const App = () => {
             <main className="main-content">
                 <section className="magic-instructions">
                     <p className="instruction-text">
-                        Type your command below to get started ex:
+                        Type your command below to get started, e.g.:
                     </p>
                     <code className="example-code">echo Hello, UART!</code>
                 </section>
@@ -69,6 +69,15 @@ const App = () => {
                         prompt="> "
                     />
                 </div>
+
+                <section className="dev-notice">
+                    <br/>
+                    <p className="dev-text">
+                        ⚠️ **Notice**: This application is currently a work in progress! 
+                        While the frontend is functional, backend integration is still in development, so some features may not work yet. 
+                        Your patience and feedback are greatly appreciated as I work to bring the full experience to life! 🙏
+                    </p>
+                </section>
             </main>
 
             <footer className="footer">
