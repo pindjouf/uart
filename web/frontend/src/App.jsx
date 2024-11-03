@@ -48,7 +48,7 @@ const App = () => {
             <main className="main-content">
                 <section className="magic-instructions">
                     <p className="instruction-text">
-                        Type your command below to get started:
+                        Type your command below to get started ex:
                     </p>
                     <code className="example-code">echo Hello, UART!</code>
                 </section>
