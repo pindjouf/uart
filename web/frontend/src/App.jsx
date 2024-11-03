@@ -73,7 +73,7 @@ const App = () => {
 
             <footer className="footer">
                 <p className="footer-text">Developed by pindjouf | © {new Date().getFullYear()}</p>
-                <a target="_blank" rel="noopener noreferrer" className="source-code-link" href="https://github.com/pindjouf/uart">🔗 View Source Code</a>
+                <a target="_blank" rel="noopener noreferrer" className="source-code-link" href="https://github.com/pindjouf/uart/tree/master/web">🔗 View Source Code</a>
             </footer>
         </div>
     );
