@@ -4,7 +4,7 @@ module baudUnit (
     input clk,
     output reg baud,
     output reg sample
-);
+    );
 
 parameter SYSTEM_CLOCK_FREQ = 100000000; // 100 MHz
 parameter BAUD_RATE = 115200;
@@ -18,7 +18,7 @@ always @(posedge clk) begin
         counter <= 0;
         baud <= ~baud;
         sample <= 0;
-    end else if (counter >= DIVIDER / 2) begin
+    end else if (baud && counter >= DIVIDER / 2) begin
         sample <= 1;
         counter <= counter + 1;
     end else begin

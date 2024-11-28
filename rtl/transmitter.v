@@ -1,56 +1,73 @@
 `timescale 1ns/1ps
 `include "states.svh"
 
-module transmitter(
+module transmitter (
+    input [7:0] bus,
     input clk,
-    input rstn,
-    input reg [7:0] bus,
-    output baud,
-    output sample,
-    output rx
-);
+    input rst,
+    output reg tx,
+    output reg baud
+    );
+
+    reg [9:0] shift_register;
+    reg [3:0] shift_counter;
+    state cur_state, nxt_state;
 
     baudUnit dut (
         .clk(clk),
-        .baud(baud),
-        .sample(sample)
+        .baud(baud)
     );
 
-    state cur_state, nxt_state;
-    reg [3:0] counter;
-
-    always @(posedge clk) begin
-        if (!rstn) begin
-            cur_state <= IDLE;
-        end else begin
-            cur_state <= nxt_state;
-        end
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        cur_state <= IDLE;
+    end else begin
+        cur_state <= nxt_state;
     end
+end
 
-    always @(posedge sample) begin
+always @(posedge baud) begin
         case (cur_state)
             IDLE: begin
-                bus <= rx;
-                if (rx == 0) begin
-                    nxt_state <= START;
+                shift_counter <= 4'b0000;
+                tx <= 1'b1;
+                if (bus >= 8'b00000001) begin
+                    nxt_state <= WRITE;
+                end else begin
+                    nxt_state <= IDLE;
                 end
             end
             WRITE: begin
-               nxt_state <= SHIFT;
-               counter++;
+                shift_register <= {1'b1, bus, 1'b0};
+                if (shift_register == {1'b1, bus, 1'b0}) begin
+                    nxt_state <= SHIFT;
+                end else begin
+                    nxt_state <= WRITE;
+                end
             end
             SHIFT: begin
-                bus <= {bus[6:0], rx};
-                counter++;
-                if (counter == 10) begin
-                    if (rx == 1) begin
-                        nxt_state <= STOP;
-                    end
+                tx <= shift_register[0];
+                shift_register <= {1'b1, shift_register[9:1]};
+                shift_counter <= shift_counter + 1'b1;
+                if (shift_counter == 4'b1001) begin
+                    nxt_state <= CLEAR;
+                end else begin
+                    nxt_state <= SHIFT;
                 end
             end
             CLEAR: begin
-                nxt_state <= IDLE;
+                shift_counter <= 4'b0000;
+                shift_register <= 10'b0000000000;
+                if (shift_register == 10'b0000000000) begin
+                    nxt_state <= IDLE;
+                end else begin
+                    nxt_state <= CLEAR;
+                end
             end
+        default: begin
+            nxt_state <= IDLE;
+        end
         endcase
     end
-endmodule
+
+endmodule // transmitter
