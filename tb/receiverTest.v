@@ -1,104 +1,71 @@
 `timescale 1ns/1ps
 
+// uncomment to activate DEBUG mode and output the cur_state variable :D
+// `define DEBUG
+
 module receiverTest;
-
-parameter WIDTH = 8;
-
-reg clk;
-reg data;
-wire sample;
-reg baud;
-reg reset;
-reg hold_value;
-reg [WIDTH-1:0] rx;
+    reg clk;
+    reg rstn;
+    reg rx;
+    wire [7:0] bus;
+    wire cur_state;
 
     receiver dut (
-        .data(data),
-        .hold_value(hold_value),
-        .baud(baud),
-        .reset(reset),
         .clk(clk),
-        .sample(sample),
-        .rx(rx)
+        .rstn(rstn),
+        .rx(rx),
+        .bus(bus)
     );
 
-    baudUnit baudGen (
-        .clk(clk),
-        .reset(reset),
-        .baud(baud),
-        .sample(sample)
-    );
+    always #10 clk = ~clk; // 50 MHz clock
 
-    always #5 clk = ~clk;
-    always if (reset) begin data = 1'b0; end
+    // simulate some data frames coming in
+    task send_byte(input [7:0] data);
+        integer i;
+        begin
+            // start bit
+            rx = 0;
+            #(8681); // symbol duration time
+
+            // data bits
+            for (i = 0; i < 8; i = i + 1) begin
+                rx = data[i];
+                #(8681);
+            end
+
+            // stop bit
+            rx = 1;
+            #(8681);
+
+            $display("Transferred byte: 0x%h, Bus value: %b", data, bus);
+        end
+    endtask
 
     initial begin
-        data = 1;
-        clk = 0;
         $dumpfile("rxDump.vcd");
-        $dumpvars;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 0;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 1;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 0;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 0;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 1;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 1;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 0;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 0;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        #8675 data = 1;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        // #8675 hold_value = 1;
-        #8675 reset = 1;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
-        // hold_value = 1;
-        #8675 reset = 0;
-        #99999;
-        $display("time=%0tps", $time);
-        $display("input=%0h", data);
-        $display("output=%0h", rx[7], rx[6], rx[5], rx[4], rx[3], rx[2], rx[1], rx[0]);
-        $display("---");
+        $dumpvars(0, receiverTest);
+
+        clk = 0;
+        rstn = 0;
+        rx = 1;
+        #100 rstn = 1;
+
+        // "Hello, World!" in ASCII
+        send_byte(8'h48); // H
+        send_byte(8'h65); // e
+        send_byte(8'h6C); // l
+        send_byte(8'h6C); // l
+        send_byte(8'h6F); // o
+        send_byte(8'h2C); // ,
+        send_byte(8'h20); // (space)
+        send_byte(8'h57); // W
+        send_byte(8'h6F); // o
+        send_byte(8'h72); // r
+        send_byte(8'h6C); // l
+        send_byte(8'h64); // d
+        send_byte(8'h21); // !
+
+        #500000;
         $finish;
     end
 endmodule

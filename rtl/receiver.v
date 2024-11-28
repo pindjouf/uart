@@ -1,29 +1,9 @@
 `timescale 1ns/1ps
+`include "states.svh"
 
 module receiver (
+    input rx,
     input clk,
-    input data,
-    input reset,
-    input hold_value,
-    output baud,
-    output [7:0] rx,
-    output sample
-);
-
-    sipoUnit sipo (
-        .data_in(data),
-        .hold_value(hold_value),
-        .reset(reset),
-        .baud(baud),
-        .clk(clk),
-        .q(rx)
+    input rst,
+    output [7:0] bus
     );
-
-    baudUnit baudGen (
-        .clk(clk),
-        .baud(baud),
-        .reset(reset),
-        .sample(sample)
-    );
-
-endmodule
