@@ -5,10 +5,10 @@ module transmitter (
     input [7:0] bus,
     input clk,
     input rst,
-    output reg tx,
-    output reg baud
+    output reg tx
     );
 
+    reg baud;
     reg [9:0] shift_register;
     reg [3:0] shift_counter;
     state cur_state, nxt_state;
