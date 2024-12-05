@@ -69,5 +69,4 @@ always @(posedge baud) begin
         end
         endcase
     end
-
 endmodule // transmitter
