@@ -1,13 +1,13 @@
 `timescale 1ns/1ps
 
-module baudUnit (
+module baudUnit #(
+    SYSTEM_CLOCK_FREQ = 100000000,
+    BAUD_RATE = 115200
+    )(
     input clk,
     output reg baud,
     output reg sample
     );
-
-parameter SYSTEM_CLOCK_FREQ = 100000000; // 100 MHz
-parameter BAUD_RATE = 115200;
 
 localparam int DIVIDER = SYSTEM_CLOCK_FREQ / BAUD_RATE;
 
