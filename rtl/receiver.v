@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-`include "states.svh"
+// `include "states.svh"
 
 module receiver (
     input rx,
