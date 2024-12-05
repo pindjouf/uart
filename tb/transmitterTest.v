@@ -4,12 +4,11 @@ module transmitterTest;
 
 reg clk, rst;
 reg [7:0] data;
-wire baud, tx;
+wire tx;
 
 transmitter dut (
     .clk(clk),
     .rst(rst),
-    .baud(baud),
     .bus(data),
     .tx(tx)
 );

@@ -1,19 +1,10 @@
 # UART
 
-A **Universal Asynchronous Receiver/Transmitter (UART)** in Verilog. Keep in mind, most of this work has been done on a 5+ layover journey so some of the code is verbose and has obviously been coded with a tired mind! It's a wip btw.
-
-## 🚧 Current Status
-
-- ✅ **Baud Rate Generator** unit completed
-- ✅ **Transmitter module** module operational
-- 🔄 Actively fixing the **receiver module**
-- 🔄 Actively developing the **uart module**
-
----
+A **Universal Asynchronous Receiver/Transmitter (UART)** with a configurable baud rate, implemented in Verilog. While functional, please note that I will revisit and refactor this project with more sensible and clean code as I continue improving my Verilog skills.
 
 ## 🎯 Project Goals
 
-Echo **"Hello, World!"** in bytes, as per wikipedia:
+Echo **"Hello, World!"** in bytes, as per Wikipedia:
 > **echo** is the local display of data, either initially as it is **local**ly sourced and sent, or finally as a copy of it is received back from a **remote** destination. **Local echo** is where the local sending equipment displays the outgoing sent data. **Remote echo** is where the display is a return copy of data as received remotely.
 
 | Character | ASCII (Hex) | ASCII (Binary)  |
@@ -41,54 +32,16 @@ Here's what the project layout looks like:
 ├── README.md                # This file!
 ├── rtl                      # RTL modules (core logic)
 │   ├── baudUnit.v           # Baud Rate Generator
-│   ├── dff.v                # D Flip-Flop for register-based logic
-│   ├── pisoUnit.v           # PISO (Parallel-In Serial-Out) unit
-│   ├── sipoUnit.v           # SIPO (Serial-In Parallel-Out) unit
-│   └── transmitter.v        # UART transmitter
-│   └── receiver.v        # UART receiver
-│   └── uart.v        # UART top-module
+│   ├── transmitter.v        # UART transmitter
+│   ├── receiver.v           # UART receiver
+│   └── uart.v               # UART top-module
 ├── sim                      # Simulation outputs
 │   └── waveforms            # Generated waveforms (output)
 └── tb                       # Testbenches for simulation
     ├── baudTest.v           # Testbench for Baud Unit
-    ├── pisoTest.v           # Testbench for PISO Unit
-    ├── sipoTest.v           # Testbench for SIPO Unit
-    └── transmitterTest.v     # Testbench for Transmitter
-    └── receiverTest.v     # Testbench for Receiver 
+    ├── uartTest.v           # Testbench for UART top-module
+    ├── transmitterTest.v    # Testbench for Transmitter
+    └── receiverTest.v       # Testbench for Receiver 
 ```
 
-## 🛣️ Roadmap
-
-### Core Components
-
-1. **Complete SIPO unit** (Serial-In Parallel-Out)
-   - [x] Implement basic shift register
-   - [x] Add parameterization for register width
-   - [x] Implement and test hold functionality
-
-2. **Develop UART Transmitter**
-   - [x] Design and implement **Parallel-In Serial-Out (PISO)** functionality
-   - [x] Add **baud rate generator**
-   - [x] Integrate **start and stop bit** generation
-   - [x] Implement **new testbench** for thorough validation
-
-3. **Develop UART Receiver**
-   - [x] Design receiver module
-   - [ ] Implement start bit detection
-   - [ ] Add data sampling logic
-   - [ ] Implement stop bit checking
-
-4. **Top-Level UART Module**
-   - [x] Integrate transmitter and receiver modules
-   - [x] Add configurable options (baud rate, data bits)
-
-5. **Develop Comprehensive Testbench**
-   - [x] Test individual modules
-   - [ ] Develop full UART system testbench
-   - [ ] Add various test scenarios to cover edge cases
-
-### 🛠️ Optional Enhancements
-
-- [ ] Add **parity bit** support
-- [ ] Implement **FIFO buffers** for transmit/receive queues
-- [ ] Add **oversampling** for improved noise immunity
+Keep in mind, this project was primarily developed during a tiring 5+ layover journey, so some of the code might be verbose or less polished. Future revisions will address these shortcomings.
